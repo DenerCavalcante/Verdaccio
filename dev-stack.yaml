@@ -1,0 +1,22 @@
+version: "3.2"
+services:
+  app:
+    image: verdaccio/verdaccio:latest
+    working_dir: /app/
+    ports:
+      - 4873:4873
+    deploy:
+      labels:
+        traefik.http.services.verdaccio.loadbalancer.server.port: "4873"
+        traefik.http.routers.verdaccio.rule: (Host(`verdaccio.dev.in`))
+        traefik.docker.network: proxy
+        traefik.enable: "true"
+        traefik.http.routers.verdaccio.entrypoints: http
+    tty: true
+    networks:
+      - proxy
+      - verdaccio_net
+networks:
+  proxy:
+    external: true
+  verdaccio_net:      

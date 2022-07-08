@@ -1,0 +1,9 @@
+{
+    "publishConfig": {
+        "registry": "http://localhost:4873"
+    },
+
+    "dependencies": {
+        "verdaccio": "^5.13.1"
+    }
+}
